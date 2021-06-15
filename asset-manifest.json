@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/uplara-client/static/css/main.f3c42b3d.chunk.css",
-    "main.js": "/uplara-client/static/js/main.7f24278f.chunk.js",
-    "main.js.map": "/uplara-client/static/js/main.7f24278f.chunk.js.map",
+    "main.js": "/uplara-client/static/js/main.e9da3fe1.chunk.js",
+    "main.js.map": "/uplara-client/static/js/main.e9da3fe1.chunk.js.map",
     "runtime-main.js": "/uplara-client/static/js/runtime-main.ebd0cc7c.js",
     "runtime-main.js.map": "/uplara-client/static/js/runtime-main.ebd0cc7c.js.map",
     "static/js/2.b70ebaae.chunk.js": "/uplara-client/static/js/2.b70ebaae.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.ebd0cc7c.js",
     "static/js/2.b70ebaae.chunk.js",
     "static/css/main.f3c42b3d.chunk.css",
-    "static/js/main.7f24278f.chunk.js"
+    "static/js/main.e9da3fe1.chunk.js"
   ]
 }
