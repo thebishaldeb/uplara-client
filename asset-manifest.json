@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/uplara-client/static/css/main.f3c42b3d.chunk.css",
+    "main.js": "/uplara-client/static/js/main.87bb9f6a.chunk.js",
+    "main.js.map": "/uplara-client/static/js/main.87bb9f6a.chunk.js.map",
+    "runtime-main.js": "/uplara-client/static/js/runtime-main.ebd0cc7c.js",
+    "runtime-main.js.map": "/uplara-client/static/js/runtime-main.ebd0cc7c.js.map",
+    "static/js/2.8bfd6f0d.chunk.js": "/uplara-client/static/js/2.8bfd6f0d.chunk.js",
+    "static/js/2.8bfd6f0d.chunk.js.map": "/uplara-client/static/js/2.8bfd6f0d.chunk.js.map",
+    "static/js/3.68bfb25a.chunk.js": "/uplara-client/static/js/3.68bfb25a.chunk.js",
+    "static/js/3.68bfb25a.chunk.js.map": "/uplara-client/static/js/3.68bfb25a.chunk.js.map",
+    "index.html": "/uplara-client/index.html",
+    "static/css/main.f3c42b3d.chunk.css.map": "/uplara-client/static/css/main.f3c42b3d.chunk.css.map",
+    "static/js/2.8bfd6f0d.chunk.js.LICENSE.txt": "/uplara-client/static/js/2.8bfd6f0d.chunk.js.LICENSE.txt",
+    "static/media/icon-paper.8b57a6b1.svg": "/uplara-client/static/media/icon-paper.8b57a6b1.svg",
+    "static/media/icon-rock.476e90a9.svg": "/uplara-client/static/media/icon-rock.476e90a9.svg",
+    "static/media/icon-scissors.3b1a5d7e.svg": "/uplara-client/static/media/icon-scissors.3b1a5d7e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ebd0cc7c.js",
+    "static/js/2.8bfd6f0d.chunk.js",
+    "static/css/main.f3c42b3d.chunk.css",
+    "static/js/main.87bb9f6a.chunk.js"
+  ]
+}
