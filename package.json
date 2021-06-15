@@ -39,7 +39,7 @@
     "url": "git+https://github.com/thebishaldeb/uplara-client.git"
   },
   "engines": {
-    "node": "11.4.0"
+    "node": "12.19.0"
   },
   "resolutions": {
     "styled-components": "^5"
