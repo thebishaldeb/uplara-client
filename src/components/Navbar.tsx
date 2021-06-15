@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { SUB_USER_INV_COUNT, GET_USER_INV_COUNT } from "../gql/queries";
 import styled from "styled-components";
 import { logout } from "../utils";
+import { useQuery } from "@apollo/client";
 
 const Content = styled.div`
   margin: 0 8%;
@@ -105,19 +107,48 @@ const NavIcon = styled("i")`
 `;
 
 const Navbar = ({ children }: any) => {
+  const id: number = Number(localStorage.getItem("user_id"));
+
+  const { subscribeToMore, ...result } = useQuery(GET_USER_INV_COUNT, {
+    variables: {
+      id,
+    },
+  });
+
+  subscribeToMore({
+    document: SUB_USER_INV_COUNT,
+    variables: {
+      id,
+    },
+    updateQuery: (prev, { subscriptionData }) => {
+      if (!subscriptionData.data) return prev;
+      const { game_aggregate } = subscriptionData.data;
+      return Object.assign({}, prev, {
+        game_aggregate,
+      });
+    },
+  });
+
   const [isClicked, setClicked] = useState(false);
 
   return (
     <>
       <Header>
         <Nav>
-          <NavLogo to="/">Rock-Paper-Scissors</NavLogo>
+          <NavLogo onClick={() => setClicked(false)} to="/">
+            Rock-Paper-Scissors
+          </NavLogo>
           <NavMenu isClicked={isClicked}>
-            <NavItem isClicked={isClicked}>
+            <NavItem onClick={() => setClicked(false)} isClicked={isClicked}>
               <NavLink to="/my-games">History</NavLink>
             </NavItem>
-            <NavItem isClicked={isClicked}>
-              <NavLink to="/invites">Invites</NavLink>
+            <NavItem onClick={() => setClicked(false)} isClicked={isClicked}>
+              <NavLink to="/invites">
+                Invites (
+                {(result.data && result.data.game_aggregate.aggregate.count) ||
+                  0}
+                )
+              </NavLink>
             </NavItem>
             <NavItem isClicked={isClicked}>
               <Button onClick={() => logout()}>Log Out</Button>

@@ -9,6 +9,15 @@ export const GET_USERS = gql`
   }
 `;
 
+export const SUB_USERS = gql`
+  subscription GetUsersSub($id: Int!) {
+    user(where: { id: { _neq: $id } }) {
+      id
+      username
+    }
+  }
+`;
+
 export const REGISTER = gql`
   mutation ($username: String!, $password: String!) {
     register(username: $username, password: $password) {
@@ -122,6 +131,30 @@ export const GET_USER_GAMES = gql`
       id
       user {
         username
+      }
+    }
+  }
+`;
+
+export const GET_USER_INV_COUNT = gql`
+  query GetUserGames($id: Int) {
+    game_aggregate(
+      where: { move_2: { _is_null: true }, user_id_2: { _eq: $id } }
+    ) {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+
+export const SUB_USER_INV_COUNT = gql`
+  subscription GetUserGamesCount($id: Int) {
+    game_aggregate(
+      where: { move_2: { _is_null: true }, user_id_2: { _eq: $id } }
+    ) {
+      aggregate {
+        count
       }
     }
   }

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import styled from "styled-components";
 
-import { GET_USERS, ADD_GAME } from "../gql/queries";
+import { GET_USERS, ADD_GAME, SUB_USERS } from "../gql/queries";
 import { showError } from "../utils";
 
 const FlexContainer = styled.div`
@@ -84,7 +84,7 @@ const Users = () => {
     onError: showError,
   });
 
-  const { loading, error, data } = useQuery(GET_USERS, {
+  const { subscribeToMore, loading, error, data } = useQuery(GET_USERS, {
     variables: {
       id,
     },
@@ -98,6 +98,20 @@ const Users = () => {
   if (error) {
     return <div>Error!</div>;
   }
+
+  subscribeToMore({
+    document: SUB_USERS,
+    variables: {
+      id,
+    },
+    updateQuery: (prev, { subscriptionData }) => {
+      if (!subscriptionData.data) return prev;
+      const { user } = subscriptionData.data;
+      return Object.assign({}, prev, {
+        user,
+      });
+    },
+  });
 
   const startGame = async (user_id_2: number) => {
     await addGame({ variables: { user_id_1: id, user_id_2 } });
