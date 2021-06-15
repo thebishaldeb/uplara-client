@@ -4,30 +4,30 @@ import { useHistory } from "react-router-dom";
 import { GET_GAMES } from "../gql/queries";
 import { mapWInToColor, winFunc } from "../utils";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const ContentCard = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 const Head = styled.h2`
-letter-spacing: 4px;
+  letter-spacing: 4px;
   padding-bottom: 23px;
   padding-top: 10px;
   text-align: center;
-  font-weight: 600
-`
+  font-weight: 600;
+`;
 const Card = styled.div`
-padding: 40px;
-background: white;
-text-align: center;
-font-size: 20px;
-max-width: 800px;
-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
-`
+  padding: 40px;
+  background: white;
+  text-align: center;
+  font-size: 20px;
+  max-width: 800px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+`;
 
 const Table = styled("table")`
   background: white;
@@ -48,15 +48,15 @@ const Table = styled("table")`
   }
 `;
 
-const Td = styled("table")<{type: any}>`
-      font-weight: 700;
-letter-spacing: 1.5px;
-word-spacing: 2px;
-      width: 100%;      
-      padding: 15px;
-      text-align: center;
-  color: ${props => mapWInToColor(props.type)};
-`
+const Td = styled("table")<{ type: any }>`
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  word-spacing: 2px;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  color: ${(props) => mapWInToColor(props.type)};
+`;
 
 const Button = styled("button")`
   cursor: pointer;
@@ -85,7 +85,7 @@ const MyGames = () => {
     variables: {
       id,
     },
-    fetchPolicy: "cache-and-network"
+    fetchPolicy: "cache-and-network",
   });
 
   if (loading) {
@@ -110,15 +110,21 @@ const MyGames = () => {
             {data.user_by_pk.games.map((item: any) => (
               <tr key={item.id}>
                 <td>{item.userByUserId2.username}</td>
-                <Td type={item.move_1 && item.move_2
-                    ? winFunc(item.move_1, item.move_2)
-                    : "Incomplete"}>
+                <Td
+                  type={
+                    item.move_1 && item.move_2
+                      ? winFunc(item.move_1, item.move_2)
+                      : "Incomplete"
+                  }
+                >
                   {item.move_1 && item.move_2
                     ? winFunc(item.move_1, item.move_2)
                     : "Incomplete"}
                 </Td>
                 <td>
-                <Button onClick={() => history.push(`/game/${item.id}`)}>Details</Button>
+                  <Button onClick={() => history.push(`/game/${item.id}`)}>
+                    Details
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -141,15 +147,21 @@ const MyGames = () => {
             {data.user_by_pk.gamesByUserId2.map((item: any) => (
               <tr key={item.id}>
                 <td>{item.user.username}</td>
-                <Td type={item.move_1 && item.move_2
-                    ? winFunc(item.move_2, item.move_1)
-                    : "Incomplete"}>
+                <Td
+                  type={
+                    item.move_1 && item.move_2
+                      ? winFunc(item.move_2, item.move_1)
+                      : "Incomplete"
+                  }
+                >
                   {item.move_1 && item.move_2
                     ? winFunc(item.move_2, item.move_1)
                     : "Incomplete"}
                 </Td>
                 <td>
-                <Button onClick={() => history.push(`/game/${item.id}`)}>Details</Button>
+                  <Button onClick={() => history.push(`/game/${item.id}`)}>
+                    Details
+                  </Button>
                 </td>
               </tr>
             ))}

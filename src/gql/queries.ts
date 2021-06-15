@@ -10,18 +10,18 @@ export const GET_USERS = gql`
 `;
 
 export const REGISTER = gql`
-mutation ($username: String!, $password: String!) {
-  register(username: $username, password: $password){
-    token
-    id
-    username
+  mutation ($username: String!, $password: String!) {
+    register(username: $username, password: $password) {
+      token
+      id
+      username
+    }
   }
-}
 `;
 
 export const LOGIN_USER = gql`
   mutation ($username: String!, $password: String!) {
-    login(username: $username, password: $password){
+    login(username: $username, password: $password) {
       token
       id
       username
@@ -117,13 +117,12 @@ export const GET_GAMES = gql`
 `;
 
 export const GET_USER_GAMES = gql`
-query GetUserGames($id: Int) {
-  game(where: {move_2: {_is_null: true}, user_id_2: {_eq: $id}}) {
-    id
-    user {
-      username
+  query GetUserGames($id: Int) {
+    game(where: { move_2: { _is_null: true }, user_id_2: { _eq: $id } }) {
+      id
+      user {
+        username
+      }
     }
   }
-}
-
-`
+`;

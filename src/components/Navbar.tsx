@@ -1,78 +1,82 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 import { logout } from "../utils";
 
 const Content = styled.div`
-margin: 0 8%;
-padding-bottom: 40px;
-`
+  margin: 0 8%;
+  padding-bottom: 40px;
+`;
 const Header = styled.div`
- border-bottom: 1px solid #E2E8F0;
-`
+  border-bottom: 1px solid #e2e8f0;
+`;
 const Nav = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-padding: 1rem 5%;
-background: #973050;
-padding-bottom: 0;
-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem 5%;
+  background: #973050;
+  padding-bottom: 0;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.65);
   @media screen and (max-width: 800px) {
-      display: block;
-      padding-bottom: 20px;
-  }
-`
-
-const NavMenu = styled("div")<{isClicked?: any}>`
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 20px;
-@media screen and (max-width: 800px) {
-  ${props =>
-    props.isClicked ? `
     display: block;
-    ` : `
+    padding-bottom: 20px;
+  }
+`;
+
+const NavMenu = styled("div")<{ isClicked?: any }>`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  @media screen and (max-width: 800px) {
+    ${(props) =>
+      props.isClicked
+        ? `
+    display: block;
+    `
+        : `
     display: none;
     `}
- }
-`
+  }
+`;
 
-const NavItem = styled("span")<{isClicked?: any}>`
-margin-left: 5rem;
-list-style: none;
-@media screen and (max-width: 800px) {
-  ${props =>
-    props.isClicked ? `
+const NavItem = styled("span")<{ isClicked?: any }>`
+  margin-left: 5rem;
+  list-style: none;
+  @media screen and (max-width: 800px) {
+    ${(props) =>
+      props.isClicked
+        ? `
     display: block;
     margin: 30px 10px;
-    ` : `
+    `
+        : `
     display: none;
     `}
- }
-`
+  }
+`;
 
 const NavLink = styled(Link)`
-font-size: 25px;
-font-weight: 400;
-color: white;
-text-decoration: none;
+  font-size: 25px;
+  font-weight: 400;
+  color: white;
+  text-decoration: none;
   &:hover {
     color: black;
   }
 `;
 
 const NavLogo = styled(Link)`
-font-size: 25px;
-    font-weight: 500;
-    color: white;
-    text-decoration: none;
-    margin-bottom: 20px;
-`
-const Button = styled("button")<{isClicked?: boolean}>`
+  font-size: 25px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 20px;
+`;
+const Button = styled("button")<{ isClicked?: boolean }>`
   cursor: pointer;
   font-size: 16px;
   border-radius: 3px;
@@ -88,8 +92,8 @@ const Button = styled("button")<{isClicked?: boolean}>`
 `;
 
 const NavIcon = styled("i")`
- display: none;
- @media screen and (max-width: 800px) {
+  display: none;
+  @media screen and (max-width: 800px) {
     display: block;
     position: absolute;
     right: 0;
@@ -97,34 +101,36 @@ const NavIcon = styled("i")`
     font-size: 40px;
     margin: 15px;
     color: white;
- }
-`
+  }
+`;
 
-const Navbar = ({children}: any) => {
-  const [isClicked, setClicked] = useState(false)
+const Navbar = ({ children }: any) => {
+  const [isClicked, setClicked] = useState(false);
 
   return (
-      <>
-    <Header>
+    <>
+      <Header>
         <Nav>
-            <NavLogo to="/">Rock-Paper-Scissors</NavLogo>
-            <NavMenu isClicked={isClicked}>
-                <NavItem isClicked={isClicked}>
-                    <NavLink to="/my-games">History</NavLink>
-                </NavItem>
-                <NavItem isClicked={isClicked}>
-                    <NavLink to="/invites">Invites</NavLink>
-                </NavItem>
-                <NavItem isClicked={isClicked}>
-                <Button onClick={() => logout()}>Log Out</Button>
-                </NavItem>
-            </NavMenu>
-            <NavIcon onClick={()=> setClicked(!isClicked)} className="fa fa-bars"></NavIcon>
+          <NavLogo to="/">Rock-Paper-Scissors</NavLogo>
+          <NavMenu isClicked={isClicked}>
+            <NavItem isClicked={isClicked}>
+              <NavLink to="/my-games">History</NavLink>
+            </NavItem>
+            <NavItem isClicked={isClicked}>
+              <NavLink to="/invites">Invites</NavLink>
+            </NavItem>
+            <NavItem isClicked={isClicked}>
+              <Button onClick={() => logout()}>Log Out</Button>
+            </NavItem>
+          </NavMenu>
+          <NavIcon
+            onClick={() => setClicked(!isClicked)}
+            className="fa fa-bars"
+          ></NavIcon>
         </Nav>
-</Header>
-<Content>
-{children}</Content>
-</>
+      </Header>
+      <Content>{children}</Content>
+    </>
   );
 };
 

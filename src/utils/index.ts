@@ -38,6 +38,6 @@ export const mapWInToColor = (mov: any) => {
     case "Match Draw":
       return "palevioletred";
     default:
-      return '#bbb';
+      return "#bbb";
   }
-}
+};

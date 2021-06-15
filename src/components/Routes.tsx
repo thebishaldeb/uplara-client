@@ -10,32 +10,35 @@ import Invites from "./Invites";
 const Routes = () => {
   const RedirectToLogin = ({ component: Component, ...rest }: any) => {
     return (
-        <Route
-            {...rest}
-            render={(props) =>
-                localStorage.getItem('auth_token') ? (
-                        <Navbar><Component {...props} /></Navbar>
-                ) : (
-                        <Redirect to="/sign-in" />
-                    )}
-        />
-    );
-};
-
-const RedirectToHome = ({ component: Component, ...rest }: any) => {
-  return (
       <Route
-          {...rest}
-          render={(props) =>
-              localStorage.getItem('auth_token') ? (
-                <Redirect to="/" />
-                      
-              ) : (
-                <Component {...props} />
-                  )}
+        {...rest}
+        render={(props) =>
+          localStorage.getItem("auth_token") ? (
+            <Navbar>
+              <Component {...props} />
+            </Navbar>
+          ) : (
+            <Redirect to="/sign-in" />
+          )
+        }
       />
-  );
-};
+    );
+  };
+
+  const RedirectToHome = ({ component: Component, ...rest }: any) => {
+    return (
+      <Route
+        {...rest}
+        render={(props) =>
+          localStorage.getItem("auth_token") ? (
+            <Redirect to="/" />
+          ) : (
+            <Component {...props} />
+          )
+        }
+      />
+    );
+  };
   return (
     <Switch>
       <RedirectToLogin exact path="/" component={Users} />

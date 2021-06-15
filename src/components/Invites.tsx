@@ -3,30 +3,30 @@ import { useHistory } from "react-router-dom";
 
 import { GET_USER_GAMES } from "../gql/queries";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const ContentCard = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 const Head = styled.h2`
-letter-spacing: 4px;
+  letter-spacing: 4px;
   padding-bottom: 23px;
   padding-top: 10px;
   text-align: center;
-  font-weight: 600
-`
+  font-weight: 600;
+`;
 const Card = styled.div`
-padding: 40px;
-background: white;
-text-align: center;
-font-size: 20px;
-max-width: 800px;
-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
-`
+  padding: 40px;
+  background: white;
+  text-align: center;
+  font-size: 20px;
+  max-width: 800px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+`;
 
 const Table = styled("table")`
   background: white;
@@ -46,10 +46,9 @@ const Table = styled("table")`
   }
 `;
 
-const Button = styled("button")<{primary?: boolean}>`
+const Button = styled("button")<{ primary?: boolean }>`
   cursor: pointer;
-  background-color: ${props =>
-    props.primary ? '#1e88e5' : 'palevioletred'};
+  background-color: ${(props) => (props.primary ? "#1e88e5" : "palevioletred")};
   font-size: 16px;
   border-radius: 3px;
   color: white;
@@ -76,7 +75,7 @@ const Invites = () => {
     variables: {
       id,
     },
-    fetchPolicy: "cache-and-network"
+    fetchPolicy: "cache-and-network",
   });
 
   if (loading) {
@@ -102,7 +101,9 @@ const Invites = () => {
               <tr key={item.id}>
                 <td>{item.user.username}</td>
                 <td>
-                <Button onClick={() => history.push(`/game/${item.id}`)}>Play</Button>
+                  <Button onClick={() => history.push(`/game/${item.id}`)}>
+                    Play
+                  </Button>
                 </td>
               </tr>
             ))}
