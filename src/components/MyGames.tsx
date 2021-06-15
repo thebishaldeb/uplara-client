@@ -98,7 +98,9 @@ const MyGames = () => {
   return (
     <ContentCard>
       <Head>My Games</Head>
-      {data.user_by_pk.games.length > 0 ? (
+      {data.user_by_pk &&
+      data.user_by_pk.games &&
+      data.user_by_pk.games.length > 0 ? (
         <Table style={{ width: "100%" }}>
           <thead>
             <tr>
@@ -135,7 +137,9 @@ const MyGames = () => {
       )}
       <br />
       <Head>Challenges</Head>
-      {data.user_by_pk.gamesByUserId2.length > 0 ? (
+      {data.user_by_pk &&
+      data.user_by_pk.gamesByUserId2 &&
+      data.user_by_pk.gamesByUserId2.length > 0 ? (
         <Table style={{ width: "100%" }}>
           <thead>
             <tr>
